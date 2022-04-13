@@ -17,6 +17,7 @@ pop_bra <- readRDS( here("data/pop_bra.rds"))
 d <- df_SIVEP %>%  # filter(time > 2) %>%
   select(Age, variant) %>%
   mutate(Age = floor(Age) )
+
 d_aggr_bra <- d %>%
   group_by(Age, variant) %>%
   summarize(num=n()) 
@@ -32,6 +33,7 @@ d_bra <- left_join(d_aggr_bra, pop_bra, by="Age")
 head(d_bra)
 sum(d_bra$pop_age)/3/1000000 # should be around 212
 
+
 d_bra_20 <- d_bra %>% filter(Age < 20) %>%
   mutate(Wave = case_when(variant=='Delta_Period' ~ 'Delta',
                           variant=='Gamma_Period' ~ 'Gamma',
@@ -40,8 +42,13 @@ d_bra_20 <- d_bra %>% filter(Age < 20) %>%
          Wave = relevel(Wave, ref='Delta')) %>%
   group_by(Age = cut(Age,c(0,1,5,10,19),include.lowest=T,right=F,
                      labels=c("<1 year", "1-4","5-9", "10-19 years")), Wave) %>% 
-  summarize(per100K = sum(num) / sum(pop_age) * 100000) 
+  summarize(per100K = sum(num) / sum(pop_age) * 100000,
+            hospit_num = sum(num)) 
 
+# Table 1A
+xtabs(hospit_num ~ Age + Wave , data= d_bra_20 %>% filter(Wave %in% c('Delta', 'Omicron')))
+
+# Faigure 1a
 (p <- ggplot(d_bra_20 %>% filter(Wave != "Gamma")) + 
     geom_bar(aes(x=Age,y=per100K,fill=Wave), stat="identity",
                  position = position_dodge2(preserve='single')) +
