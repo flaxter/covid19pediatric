@@ -9,6 +9,10 @@ library(tidyverse)
 library(here)
 library(readxl)
 
+#----------------------------------------
+# US death data
+#----------------------------------------
+
 us_data <- read.csv(here("data/raw_data/Provisional_COVID-19_Death_by_Age_in_Years__2020-2022.csv")) 
         
 us_data <- us_data %>% 
@@ -36,7 +40,7 @@ sum(us_covid$covid) == sum(us_data$COVID.19.Deaths)
 saveRDS(us_covid, here("data/us_covid.rds"))
 
 #----------------------------------------
-# population Age distribution
+# US - population Age distribution
 #----------------------------------------
 us_pop <- read_excel("data/raw_data/US_pop.xlsx", range = "A4:E90") %>% 
   select(c(1,4)) %>%
