@@ -55,11 +55,11 @@ sum(is.na(df_SIVEP_initial_remove$EVOLUCAO)) # 159,150 without outcome (NA) + 75
 table(df_SIVEP_initial_remove$EVOLUCAO, useNA = "ifany")
 
 # rename the columns and filter by date to retain only Delta/Omicron period
-gamma_start <- as.Date("2021-02-21")
-gamma_end <- as.Date("2021-08-15")
-delta_start <- as.Date("2021-09-01")
-delta_end <- as.Date("2021-12-20")
-omicron_start <- as.Date("2021-01-05")
+# gamma_start <- as.Date("2021-02-21")
+# gamma_end <- as.Date("2021-08-15")
+# delta_start <- as.Date("2021-09-01")
+# delta_end <- as.Date("2021-12-20")
+# omicron_start <- as.Date("2021-01-05")
 
 sum(df_SIVEP_initial_remove$DT_SIN_PRI >= as.Date("2021-09-01"))
 df_SIVEP_proc = df_SIVEP_initial_remove %>%
@@ -81,10 +81,10 @@ df_SIVEP_proc = df_SIVEP_initial_remove %>%
     Low_Oxygen_Sats = SATURACAO) %>%
   mutate(time = DateOutcome - DateSymptoms) %>%
   filter(!is.na(Admission) & Admission == 1) %>%
-  mutate(variant = case_when(DateSymptoms >= gamma_start & DateSymptoms <= gamma_end ~ "Gamma_Period",
-                             DateSymptoms >= delta_start & DateSymptoms <= delta_end ~ "Delta_Period",
-                             DateSymptoms >= omicron_start & DateSymptoms <= Sys.Date() ~ "Omicron_Period",
-                             TRUE ~ NA_character_)) %>%
+  # mutate(variant = case_when(DateSymptoms >= gamma_start & DateSymptoms <= gamma_end ~ "Gamma_Period",
+  #                            DateSymptoms >= delta_start & DateSymptoms <= delta_end ~ "Delta_Period",
+  #                            DateSymptoms >= omicron_start & DateSymptoms <= Sys.Date() ~ "Omicron_Period",
+  #                            TRUE ~ NA_character_)) %>%
   mutate(Outcome = case_when(Outcome == 1 ~ "Cure",
                              Outcome == 2 ~ "Death_COVID",
                              Outcome == 3 ~ "Death_Other",
@@ -102,7 +102,8 @@ sum(is.na(df_SIVEP_proc$time)) # 30000 missing either date of symptoms or date o
 
 rm(list=setdiff(ls(), "df_SIVEP_proc"))
 
-saveRDS(df_SIVEP_proc, here("data/df_SIVEP.rds"))
+#saveRDS(df_SIVEP_proc, here("data/df_SIVEP.rds"))
+saveRDS(df_SIVEP_proc, here("data/df_SIVEP_all.rds"))
 
 #----------------------------------------
 # Brazil - population Age distribution
@@ -140,8 +141,8 @@ pop_bra_func <- function() {
   return(pop_df)
 }
 
-bra_pop <- pop_bra_func()
+pop_bra <- pop_bra_func()
 
-saveRDS(bra_pop, here("data/bra_pop.rds"))
+saveRDS(pop_bra, here("data/pop_bra.rds"))
 
 
