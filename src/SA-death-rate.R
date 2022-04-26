@@ -6,32 +6,37 @@ source(here("src/pal.R"))
 # Read pre-processed data
 #----------------------------------------
 
-d_agg <- readRDS(here("data/sa_covid_agg.rds"))
+d <- readRDS(here("data/sa_covid.rds"))
 
 pop_sa <- readRDS( here("data/sa_pop.rds"))
 
 #----------------------------------------
 # South Africa
 #----------------------------------------
-head(d_agg)
+
+d <- d %>% 
+  filter(wave %in% c(1,2,3,4)) %>% 
+  select(Age, wave, status)
+
+head(d)
 
 # Table 1B
-d_table <- d_agg %>%  filter(wave == 3 | wave == 4) %>%
+d_table <- d %>%  filter(wave == 3 | wave == 4) %>%
   mutate(Wave = case_when(wave==1 ~ 'Wild-type',
                           wave==2 ~ 'Beta',
                           wave==3 ~ 'Delta',
                           wave==4 ~ 'Omicron')
   ) %>% 
   group_by(Age = cut(Age,c(0,1,5,10,20,100),include.lowest=T,right=F,
-                     labels=c("<1 year", "1-4","5-9", "10-19 years","20+")), Wave, Dead) %>% 
-  summarize(death_num=sum(num))
+                     labels=c("<1 year", "1-4","5-9", "10-19 years","20+")), Wave, status) %>% 
+  summarize(death_num=n())
 d_table
-xtabs(death_num ~ Age + Wave , data= filter(d_table, Dead ==TRUE))
+xtabs(death_num ~ Age + Wave , data= filter(d_table, status ==1))
 
-d_aggr_sa <- d_agg %>% 
-  filter(Dead == TRUE) %>%
+d_aggr_sa <- d %>% 
+  filter(status==1) %>%
   group_by(Age, wave) %>%
-  summarize(num=sum(num))
+  summarize(num=n())
 
 d_sa <- left_join(d_aggr_sa, pop_sa, by="Age")
 head(d_sa)
