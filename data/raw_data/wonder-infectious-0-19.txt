@@ -1,0 +1,95 @@
+"Notes"	"ICD-10 113 Cause List"	"ICD-10 113 Cause List Code"	Deaths	Population	Crude Rate
+	"#Salmonella infections (A01-A02)"	"GR113-001"	1	81625416	Unreliable
+	"#Shigellosis and amebiasis (A03,A06)"	"GR113-002"	1	81625416	Unreliable
+	"Certain other intestinal infections (A04,A07-A09)"	"GR113-003"	223	81625416	0.27
+	"#Tuberculosis (A16-A19)"	"GR113-004"	5	81625416	Unreliable
+	"Respiratory tuberculosis (A16)"	"GR113-005"	3	81625416	Unreliable
+	"Other tuberculosis (A17-A19)"	"GR113-006"	2	81625416	Unreliable
+	"#Whooping cough (A37)"	"GR113-007"	6	81625416	Unreliable
+	"#Meningococcal infection (A39)"	"GR113-009"	10	81625416	Unreliable
+	"#Septicemia (A40-A41)"	"GR113-010"	287	81625416	0.35
+	"#Syphilis (A50-A53)"	"GR113-011"	5	81625416	Unreliable
+	"#Viral hepatitis (B15-B19)"	"GR113-015"	1	81625416	Unreliable
+	"#Human immunodeficiency virus (HIV) disease (B20-B24)"	"GR113-016"	7	81625416	Unreliable
+	"Other and unspecified infectious and parasitic diseases and their sequelae (A00,A05,A20-A36,A42-A44,A48-A49,A54-A79,A81-A82,A85.0-A85.1,A85.8,A86-B04,B06-B09,B25-B49,B55-B99,U07.1)"	"GR113-018"	432	81625416	0.53
+	"#Influenza and pneumonia (J09-J18)"	"GR113-076"	472	81625416	0.58
+	"Influenza (J09-J11)"	"GR113-077"	172	81625416	0.21
+	"Pneumonia (J12-J18)"	"GR113-078"	300	81625416	0.37
+	"Other acute lower respiratory infections (J20-J22,U04)"	"GR113-079"	69	81625416	0.08
+	"#Acute bronchitis and bronchiolitis (J20-J21)"	"GR113-080"	63	81625416	0.08
+	"Other and unspecified acute lower respiratory infections (J22,U04)"	"GR113-081"	6	81625416	Unreliable
+	"#Chronic lower respiratory diseases (J40-J47)"	"GR113-082"	259	81625416	0.32
+	"Bronchitis, chronic and unspecified (J40-J42)"	"GR113-083"	33	81625416	0.04
+	"Asthma (J45-J46)"	"GR113-085"	206	81625416	0.25
+	"Other chronic lower respiratory diseases (J44,J47)"	"GR113-086"	20	81625416	0.02
+	"#Pneumoconioses and chemical effects (J60-J66,J68,U07.0)"	"GR113-087"	1	81625416	Unreliable
+	"#Pneumonitis due to solids and liquids (J69)"	"GR113-088"	27	81625416	0.03
+	"Other diseases of respiratory system (J00-J06,J30- J39,J67,J70-J98)"	"GR113-089"	421	81625416	0.52
+	"#Enterocolitis due to Clostridium difficile (A04.7)"	"GR113-136"	5	81625416	Unreliable
+"---"
+"Dataset: Underlying Cause of Death, 1999-2020"
+"Query Parameters:"
+"Five-Year Age Groups: < 1 year; 1-4 years; 5-9 years; 10-14 years; 15-19 years"
+"ICD-10 Codes: A00-B99 (Certain infectious and parasitic diseases); J00-J98 (Diseases of the respiratory system)"
+"Year/Month: 2019"
+"Group By: ICD-10 113 Cause List"
+"Show Totals: Disabled"
+"Show Zero Values: False"
+"Show Suppressed: False"
+"Calculate Rates Per: 100,000"
+"Rate Options: Default intercensal populations for years 2001-2009 (except Infant Age Groups)"
+"---"
+"Help: See http://wonder.cdc.gov/wonder/help/ucd.html for more information."
+"---"
+"Query Date: May 16, 2022 3:15:22 PM"
+"---"
+"Suggested Citation: Centers for Disease Control and Prevention, National Center for Health Statistics. National Vital Statistics"
+"System, Mortality 1999-2020 on CDC WONDER Online Database, released in 2021. Data are from the Multiple Cause of Death Files,"
+"1999-2020, as compiled from data provided by the 57 vital statistics jurisdictions through the Vital Statistics Cooperative"
+"Program. Accessed at http://wonder.cdc.gov/ucd-icd10.html on May 16, 2022 3:15:22 PM"
+"---"
+Messages:
+"1. Selections made to any variable in [ICD-10 Codes, ICD-10 113 Cause List] cause equivalent selections in the other variables."
+"More Information: http://wonder.cdc.gov/wonder/help/faq.html#related-variables."
+"2. Totals and Percent of Total are disabled when data are grouped by 113 or 130 Cause Lists. Check Caveats below for more"
+"information."
+"3. Rows with zero Deaths are hidden. Use Quick Options above to show zero rows."
+"---"
+Footnotes:
+"1. A '#' symbol preceding the label indicates a rankable cause of death. More information."
+"---"
+Caveats:
+"1. Totals and Percent of Total are disabled when data are grouped by a 113 or 130 Cause List because both aggregate and detailed"
+"values are displayed in the table. Also be aware that charts and maps containing both aggregate and detail data could be"
+"misleading."
+"2. Death rates are flagged as Unreliable when the rate is calculated with a numerator of 20 or less. More information:"
+"http://wonder.cdc.gov/wonder/help/ucd.html#Unreliable."
+"3. Deaths of persons with Age ""Not Stated"" are included in ""All"" counts and rates, but are not distributed among age groups,"
+"so are not included in age-specific counts, age-specific rates or in any age-adjusted rates. More information:"
+"http://wonder.cdc.gov/wonder/help/ucd.html#Not Stated."
+"4. The population figures for year 2020 are bridged-race estimates of the July 1 resident population, from the Vintage 2020"
+"postcensal series released by NCHS on September 22, 2021. The population figures for year 2019 are bridged-race estimates of the"
+"July 1 resident population, from the Vintage 2019 postcensal series released by NCHS on July 9, 2020. The population figures for"
+"year 2018 are bridged-race estimates of the July 1 resident population, from the Vintage 2018 postcensal series released by NCHS"
+"on June 25, 2019. The population figures for year 2017 are bridged-race estimates of the July 1 resident population, from the"
+"Vintage 2017 postcensal series released by NCHS on June 27, 2018. The population figures for year 2016 are bridged-race"
+"estimates of the July 1 resident population, from the Vintage 2016 postcensal series released by NCHS on June 26, 2017. The"
+"population figures for year 2015 are bridged-race estimates of the July 1 resident population, from the Vintage 2015 postcensal"
+"series released by NCHS on June 28, 2016. The population figures for year 2014 are bridged-race estimates of the July 1 resident"
+"population, from the Vintage 2014 postcensal series released by NCHS on June 30, 2015. The population figures for year 2013 are"
+"bridged-race estimates of the July 1 resident population, from the Vintage 2013 postcensal series released by NCHS on June 26,"
+"2014. The population figures for year 2012 are bridged-race estimates of the July 1 resident population, from the Vintage 2012"
+"postcensal series released by NCHS on June 13, 2013. The population figures for year 2011 are bridged-race estimates of the July"
+"1 resident population, from the Vintage 2011 postcensal series released by NCHS on July 18, 2012. Population figures for 2010"
+"are April 1 Census counts. The population figures for years 2001 - 2009 are bridged-race estimates of the July 1 resident"
+"population, from the revised intercensal county-level 2000 - 2009 series released by NCHS on October 26, 2012. Population"
+"figures for 2000 are April 1 Census counts. Population figures for 1999 are from the 1990-1999 intercensal series of July 1"
+"estimates. Population figures for the infant age groups are the number of live births. <br/><b>Note:</b> Rates and population"
+"figures for years 2001 - 2009 differ slightly from previously published reports, due to use of the population estimates which"
+"were available at the time of release."
+"5. The population figures used in the calculation of death rates for the age group 'under 1 year' are the estimates of the"
+"resident population that is under one year of age. More information: http://wonder.cdc.gov/wonder/help/ucd.html#Age Group."
+"6. Beginning with the 2018 data, changes have been implemented that affect the counts for ICD-10 cause of death codes O00-O99"
+"compared to previous practice. In addition, data for the cause of death codes O00-O99 for 2003 through 2017 reflect differences"
+"in information available to individual states and probable errors. Caution should be used in interpreting these data. More"
+"information can be found at: https://www.cdc.gov/nchs/maternal-mortality/."
