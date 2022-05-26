@@ -92,7 +92,7 @@ d %>% filter(cause != "Covid-19 (cumulative)") %>% group_by(agegroup) %>% mutate
 
 ### Table 1
 write.csv(d %>% group_by(agegroup) %>% mutate(rate=round(as.numeric(rate),1)) %>% drop_na() %>%
-            mutate(rank =  rank(-rate,ties.method="min")) %>% arrange(agegroup,-rate) %>% mutate(rate=round(rate,1),deaths=round(deaths)),file = here("results/WONDER-agegroups.csv"),row.names=F)
+            mutate(rank =  rank(-rate,ties.method="min")) %>% arrange(agegroup,-deaths) %>% mutate(rate=round(rate,1),deaths=round(deaths)),file = here("results/WONDER-agegroups.csv"),row.names=F)
 
 
 #### Supplementary
