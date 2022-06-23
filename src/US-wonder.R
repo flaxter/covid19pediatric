@@ -49,7 +49,29 @@ covid0_19$rate = 100000 * covid0_19$deaths / as.numeric(pop_us %>% filter(Age <=
 covid0_19$deaths = round(covid0_19$deaths)
 covid0_19
 
-### compare to other leading causes of death: ages < 1, 1-4, 5-9, 10-14, 15-19
+## Make figures
+
+g = ggplot(filter(covid %>% filter(cause == "#COVID-19 (U07.1) (cumulative)"), Age <= 18)) + 
+  geom_bar(aes(x=Age,y=rate), stat="identity",
+           position = position_dodge2(preserve='single'))  
+g = g + scale_x_continuous(breaks = seq(0,20,2),expand=c(0,0))
+g = g + scale_y_continuous(expand=c(0,0),limits=c(0,5))
+g = g + labs(y = "Covid-19 deaths per 100,000\n", x="\nAge") 
+g = g + ggtitle("Covid-19 death rate in the US: March 1st, 2020-April 30th, 2022")
+g = g + theme_bw()
+g
+# Figure 1
+ggsave(g,filename = here("figures/US-death-rate.png"),width=8,height=4)
+
+## Text: "Cumulative Covid-19 death rates peaked in infants aged <1 year at 4.6 deaths per 100,000 population."
+# The cumulative Covid-19 death rate was 1.1 per 100,000 in 1-year old children, below 1 per 100,000 in children aged 2-15, 
+# gradually increasing to 3.2 per 100,000 in 18-year olds. 
+
+covid %>% filter(cause == "#COVID-19 (U07.1) (cumulative)", Age <= 18) 
+
+
+
+## For Tables: compare to other leading causes of death: ages < 1, 1-4, 5-9, 10-14, 15-19
 d = rbind(
   fread(here("data/raw_data/wonder0.txt"),nrows=15) %>% select(cause=`15 Leading Causes of Death`,rate=`Crude Rate`,deaths=Deaths) %>% mutate(agegroup="[0,1)"),
   fread(here("data/raw_data/wonder1-4.txt"),nrows=15) %>% select(cause=`15 Leading Causes of Death`,rate=`Crude Rate`,deaths=Deaths) %>% mutate(agegroup="[1,5)"),
@@ -91,10 +113,10 @@ write.csv(d %>% filter(agegroup == "[0,20)") %>% group_by(agegroup) %>% mutate(r
             mutate(rank =  rank(-rate,ties.method="min")) %>% arrange(agegroup,-deaths),file = here("results/WONDER-0-19-infectious.csv"),row.names=F)
 
 # 
-d %>% filter(cause != "Covid-19 (cumulative)") %>% group_by(agegroup) %>% mutate(rate=round(as.numeric(rate),1)) %>% drop_na() %>%
-  mutate(rank =  rank(-rate,ties.method="min")) %>% arrange(agegroup,-rate) %>% filter(cause == "Covid-19 (annualized)")
-d %>% filter(cause != "Covid-19 (annualized)") %>% group_by(agegroup) %>% mutate(rate=round(as.numeric(rate),1)) %>% drop_na() %>%
-  mutate(rank =  rank(-rate,ties.method="min")) %>% arrange(agegroup,-rate) %>% filter(cause == "Covid-19 (cumulative)")
+d %>% filter(cause != "#COVID-19 (U07.1) (cumulative)") %>% group_by(agegroup) %>% mutate(rate=round(as.numeric(rate),1)) %>% drop_na() %>%
+  mutate(rank =  rank(-rate,ties.method="min")) %>% arrange(agegroup,-rate) %>% filter(cause == "#COVID-19 (U07.1) (annualized)")
+d %>% filter(cause != "#COVID-19 (U07.1) (annualized)") %>% group_by(agegroup) %>% mutate(rate=round(as.numeric(rate),1)) %>% drop_na() %>%
+  mutate(rank =  rank(-rate,ties.method="min")) %>% arrange(agegroup,-rate) %>% filter(cause == "#COVID-19 (U07.1) (cumulative)")
 
 
 
