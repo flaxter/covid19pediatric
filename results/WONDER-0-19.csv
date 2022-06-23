@@ -1,0 +1,18 @@
+"cause","rate","deaths","agegroup","rank"
+"#Certain conditions originating in the perinatal period (P00-P96)",12.7,10387,"[0,20)",1
+"#Accidents (unintentional injuries) (V01-X59,Y85-Y86)",9.1,7444,"[0,20)",2
+"#Congenital malformations, deformations and chromosomal abnormalities (Q00-Q99)",6.5,5286,"[0,20)",3
+"#Assault (homicide) (*U01-*U02,X85-Y09,Y87.1)",3.4,2770,"[0,20)",4
+"#Intentional self-harm (suicide) (*U03,X60-X84,Y87.0)",3.4,2756,"[0,20)",4
+"#Malignant neoplasms (C00-C97)",2.1,1704,"[0,20)",6
+"#COVID-19 (U07.1) (cumulative)",1.3,1088,"[0,20)",7
+"#Diseases of heart (I00-I09,I11,I13,I20-I51)",1.1,867,"[0,20)",8
+"#COVID-19 (U07.1) (annualized)",0.6,502,"[0,20)",9
+"#Influenza and pneumonia (J09-J18)",0.6,472,"[0,20)",9
+"#Cerebrovascular diseases (I60-I69)",0.4,297,"[0,20)",11
+"#Septicemia (A40-A41)",0.3,287,"[0,20)",12
+"#Chronic lower respiratory diseases (J40-J47)",0.3,259,"[0,20)",12
+"#In situ neoplasms, benign neoplasms and neoplasms of uncertain or unknown behavior (D00-D48)",0.2,185,"[0,20)",14
+"#Complications of medical and surgical care (Y40-Y84,Y88)",0.2,128,"[0,20)",14
+"#Nephritis, nephrotic syndrome and nephrosis (N00-N07,N17-N19,N25-N27)",0.1,99,"[0,20)",16
+"#Diabetes mellitus (E10-E14)",0.1,87,"[0,20)",16
