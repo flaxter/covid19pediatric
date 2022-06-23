@@ -1,0 +1,54 @@
+"Notes"	"UCD - 15 Leading Causes of Death"	"UCD - 15 Leading Causes of Death Code"	Deaths	Population	Crude Rate
+	"#Certain conditions originating in the perinatal period (P00-P96)"	"GR113-108"	21834	Not Applicable	Not Applicable
+	"#Accidents (unintentional injuries) (V01-X59,Y85-Y86)"	"GR113-112"	17331	Not Applicable	Not Applicable
+	"#Congenital malformations, deformations and chromosomal abnormalities (Q00-Q99)"	"GR113-109"	11316	Not Applicable	Not Applicable
+	"#Assault (homicide) (*U01-*U02,X85-Y09,Y87.1)"	"GR113-127"	7087	Not Applicable	Not Applicable
+	"#Intentional self-harm (suicide) (*U03,X60-X84,Y87.0)"	"GR113-124"	5559	Not Applicable	Not Applicable
+	"#Malignant neoplasms (C00-C97)"	"GR113-019"	3980	Not Applicable	Not Applicable
+	"#Diseases of heart (I00-I09,I11,I13,I20-I51)"	"GR113-054"	1900	Not Applicable	Not Applicable
+	"#COVID-19 (U07.1)"	"GR113-137"	1088	Not Applicable	Not Applicable
+	"#Cerebrovascular diseases (I60-I69)"	"GR113-070"	731	Not Applicable	Not Applicable
+	"#Influenza and pneumonia (J09-J18)"	"GR113-076"	696	Not Applicable	Not Applicable
+	"#Septicemia (A40-A41)"	"GR113-010"	534	Not Applicable	Not Applicable
+	"#Chronic lower respiratory diseases (J40-J47)"	"GR113-082"	523	Not Applicable	Not Applicable
+	"#In situ neoplasms, benign neoplasms and neoplasms of uncertain or unknown behavior (D00-D48)"	"GR113-044"	370	Not Applicable	Not Applicable
+	"#Diabetes mellitus (E10-E14)"	"GR113-046"	342	Not Applicable	Not Applicable
+	"#Nephritis, nephrotic syndrome and nephrosis (N00-N07,N17-N19,N25-N27)"	"GR113-097"	195	Not Applicable	Not Applicable
+"---"
+"Dataset: Provisional Mortality Statistics, 2018 through Last Month"
+"Query Parameters:"
+"Five-Year Age Groups: < 1 year; 1-4 years; 5-9 years; 10-14 years; 15-19 years"
+"Year/Month: 2020; 2021 (provisional); Jan., 2022 (provisional); Feb., 2022 (provisional); Mar., 2022 (provisional); Apr., 2022"
+"(provisional)"
+"Group By: UCD - 15 Leading Causes of Death"
+"Show Totals: Disabled"
+"Show Zero Values: Disabled"
+"Show Suppressed: Disabled"
+"Calculate Rates Per: 100,000"
+"Rate Options: Default intercensal populations for years 2001-2009 (except Infant Age Groups)"
+"---"
+"Help: See http://wonder.cdc.gov/wonder/help/mcd-provisional.html for more information."
+"---"
+"Query Date: Jun 23, 2022 4:49:09 AM"
+"---"
+"Suggested Citation: Centers for Disease Control and Prevention, National Center for Health Statistics. National Vital Statistics"
+"System, Provisional Mortality on CDC WONDER Online Database. Data are from the final Multiple Cause of Death Files, 2018-2020,"
+"and from provisional data for years 2021-2022, as compiled from data provided by the 57 vital statistics jurisdictions through"
+"the Vital Statistics Cooperative Program. Accessed at http://wonder.cdc.gov/mcd-icd10-provisional.html on Jun 23, 2022 4:49:09"
+"AM"
+"---"
+Messages:
+"1. When you group results by 15 Leading Causes, results are initially ordered by Death counts; also, total rows, zero rows,"
+"suppressed rows, and Percent of Total are not available. Click any green up/down arrow to change the order. #Top15#"
+"---"
+Caveats:
+"1. When you group results by 15 Leading Causes, results show the top 15 rankable causes for the query criteria. Rankable causes"
+"are a subset of the ICD 113 and ICD 130 (Infants) Cause Lists. More information:"
+"http://wonder.cdc.gov/wonder/help/mcd-provisional.html#Top15."
+"2. Population and rates are labeled 'Not Applicable' when location of Death's Occurrence, Autopsy, Place of Death, Weekday or"
+"Month are grouped by or limited, due to lack of a valid population. More information:"
+"http://wonder.cdc.gov/wonder/help/mcd-provisional.html#NotApplicableRates."
+"3. Deaths of persons with Age ""Not Stated"" are included in ""All"" counts and rates, but are not distributed among age groups,"
+"so are not included in age-specific counts, age-specific rates or in any age-adjusted rates. More information:"
+"http://wonder.cdc.gov/wonder/help/mcd-provisional.html#Not Stated."
+"4. Deaths occurring through May 21, 2022 as of June 05, 2022."
