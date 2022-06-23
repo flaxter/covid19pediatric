@@ -1,7 +1,7 @@
 "cause","rate","deaths","agegroup","rank"
-"#COVID-19 (U07.1) (cumulative)",1.3,1088,"[0,20)",1
-"#COVID-19 (U07.1) (annualized)",0.6,502,"[0,20)",2
-"#Influenza and pneumonia (J09-J18)",0.6,472,"[0,20)",2
+"Covid-19 (cumulative)",1.7,1433,"[0,20)",1
+"Covid-19 (annualized)",0.8,661,"[0,20)",2
+"#Influenza and pneumonia (J09-J18)",0.6,472,"[0,20)",3
 "Other and unspecified infectious and parasitic diseases and their sequelae (A00,A05,A20-A36,A42-A44,A48-A49,A54-A79,A81-A82,A85.0-A85.1,A85.8,A86-B04,B06-B09,B25-B49,B55-B99,U07.1)",0.5,432,"[0,20)",4
 "Other diseases of respiratory system (J00-J06,J30- J39,J67,J70-J98)",0.5,421,"[0,20)",4
 "Pneumonia (J12-J18)",0.4,300,"[0,20)",6

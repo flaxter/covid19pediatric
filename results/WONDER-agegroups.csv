@@ -2,13 +2,13 @@
 "#Certain conditions originating in the perinatal period (P00-P96)",272.1,10294,"[0,1)",1
 "#Congenital malformations, deformations and chromosomal abnormalities (Q00-Q99)",113.7,4301,"[0,1)",2
 "#Accidents (unintentional injuries) (V01-X59,Y85-Y86)",33.5,1266,"[0,1)",3
-"#Diseases of heart (I00-I09,I11,I13,I20-I51)",7.1,268,"[0,1)",4
-"#Assault (homicide) (*U01-*U02,X85-Y09,Y87.1)",7,263,"[0,1)",5
-"#COVID-19 (U07.1) (cumulative)",4.6,172,"[0,1)",6
+"Covid-19 (cumulative)",7.2,269,"[0,1)",4
+"#Diseases of heart (I00-I09,I11,I13,I20-I51)",7.1,268,"[0,1)",5
+"#Assault (homicide) (*U01-*U02,X85-Y09,Y87.1)",7,263,"[0,1)",6
 "#Influenza and pneumonia (J09-J18)",4.1,156,"[0,1)",7
 "#Septicemia (A40-A41)",3.5,133,"[0,1)",8
-"#Cerebrovascular diseases (I60-I69)",2.7,102,"[0,1)",9
-"#COVID-19 (U07.1) (annualized)",2.1,79,"[0,1)",10
+"Covid-19 (annualized)",3.3,124,"[0,1)",9
+"#Cerebrovascular diseases (I60-I69)",2.7,102,"[0,1)",10
 "#Nephritis, nephrotic syndrome and nephrosis (N00-N07,N17-N19,N25-N27)",1.6,61,"[0,1)",11
 "#Malignant neoplasms (C00-C97)",1.4,55,"[0,1)",12
 "#In situ neoplasms, benign neoplasms and neoplasms of uncertain or unknown behavior (D00-D48)",1.1,42,"[0,1)",13
@@ -19,14 +19,14 @@
 "#Congenital malformations, deformations and chromosomal abnormalities (Q00-Q99)",2.6,416,"[1,5)",2
 "#Malignant neoplasms (C00-C97)",1.8,285,"[1,5)",3
 "#Assault (homicide) (*U01-*U02,X85-Y09,Y87.1)",1.8,284,"[1,5)",3
-"#Diseases of heart (I00-I09,I11,I13,I20-I51)",0.8,133,"[1,5)",5
-"#Influenza and pneumonia (J09-J18)",0.8,122,"[1,5)",5
-"#COVID-19 (U07.1) (cumulative)",0.7,103,"[1,5)",7
+"Covid-19 (cumulative)",0.9,134,"[1,5)",5
+"#Diseases of heart (I00-I09,I11,I13,I20-I51)",0.8,133,"[1,5)",6
+"#Influenza and pneumonia (J09-J18)",0.8,122,"[1,5)",6
+"Covid-19 (annualized)",0.4,62,"[1,5)",8
 "#Certain conditions originating in the perinatal period (P00-P96)",0.4,57,"[1,5)",8
-"#Septicemia (A40-A41)",0.3,53,"[1,5)",9
-"#Cerebrovascular diseases (I60-I69)",0.3,52,"[1,5)",9
-"#In situ neoplasms, benign neoplasms and neoplasms of uncertain or unknown behavior (D00-D48)",0.3,49,"[1,5)",9
-"#COVID-19 (U07.1) (annualized)",0.3,48,"[1,5)",9
+"#Septicemia (A40-A41)",0.3,53,"[1,5)",10
+"#Cerebrovascular diseases (I60-I69)",0.3,52,"[1,5)",10
+"#In situ neoplasms, benign neoplasms and neoplasms of uncertain or unknown behavior (D00-D48)",0.3,49,"[1,5)",10
 "#Chronic lower respiratory diseases (J40-J47)",0.2,37,"[1,5)",13
 "#Complications of medical and surgical care (Y40-Y84,Y88)",0.2,26,"[1,5)",13
 "#Anemias (D50-D64)",0.1,24,"[1,5)",15
@@ -34,24 +34,24 @@
 "#Malignant neoplasms (C00-C97)",1.8,371,"[5,10)",2
 "#Congenital malformations, deformations and chromosomal abnormalities (Q00-Q99)",0.9,192,"[5,10)",3
 "#Assault (homicide) (*U01-*U02,X85-Y09,Y87.1)",0.8,155,"[5,10)",4
-"#COVID-19 (U07.1) (cumulative)",0.5,106,"[5,10)",5
+"Covid-19 (cumulative)",0.7,134,"[5,10)",5
 "#Diseases of heart (I00-I09,I11,I13,I20-I51)",0.4,91,"[5,10)",6
 "#Chronic lower respiratory diseases (J40-J47)",0.3,69,"[5,10)",7
+"Covid-19 (annualized)",0.3,62,"[5,10)",7
 "#Influenza and pneumonia (J09-J18)",0.3,52,"[5,10)",7
-"#COVID-19 (U07.1) (annualized)",0.2,49,"[5,10)",9
-"#Cerebrovascular diseases (I60-I69)",0.2,37,"[5,10)",9
-"#Septicemia (A40-A41)",0.2,36,"[5,10)",9
+"#Cerebrovascular diseases (I60-I69)",0.2,37,"[5,10)",10
+"#Septicemia (A40-A41)",0.2,36,"[5,10)",10
 "#In situ neoplasms, benign neoplasms and neoplasms of uncertain or unknown behavior (D00-D48)",0.1,31,"[5,10)",12
 "#Accidents (unintentional injuries) (V01-X59,Y85-Y86)",3.7,778,"[10,15)",1
 "#Intentional self-harm (suicide) (*U03,X60-X84,Y87.0)",2.6,534,"[10,15)",2
 "#Malignant neoplasms (C00-C97)",1.9,404,"[10,15)",3
+"Covid-19 (cumulative)",0.9,195,"[10,15)",4
 "#Assault (homicide) (*U01-*U02,X85-Y09,Y87.1)",0.9,191,"[10,15)",4
 "#Congenital malformations, deformations and chromosomal abnormalities (Q00-Q99)",0.9,189,"[10,15)",4
-"#COVID-19 (U07.1) (cumulative)",0.7,143,"[10,15)",6
+"Covid-19 (annualized)",0.4,90,"[10,15)",7
 "#Diseases of heart (I00-I09,I11,I13,I20-I51)",0.4,87,"[10,15)",7
 "#Chronic lower respiratory diseases (J40-J47)",0.4,81,"[10,15)",7
-"#Influenza and pneumonia (J09-J18)",0.3,71,"[10,15)",9
-"#COVID-19 (U07.1) (annualized)",0.3,66,"[10,15)",9
+"#Influenza and pneumonia (J09-J18)",0.3,71,"[10,15)",10
 "#Cerebrovascular diseases (I60-I69)",0.2,48,"[10,15)",11
 "#In situ neoplasms, benign neoplasms and neoplasms of uncertain or unknown behavior (D00-D48)",0.2,35,"[10,15)",11
 "#Septicemia (A40-A41)",0.1,27,"[10,15)",13
@@ -60,10 +60,10 @@
 "#Accidents (unintentional injuries) (V01-X59,Y85-Y86)",16.8,3537,"[15,20)",1
 "#Intentional self-harm (suicide) (*U03,X60-X84,Y87.0)",10.5,2210,"[15,20)",2
 "#Assault (homicide) (*U01-*U02,X85-Y09,Y87.1)",8.9,1877,"[15,20)",3
-"#Malignant neoplasms (C00-C97)",2.8,589,"[15,20)",4
-"#COVID-19 (U07.1) (cumulative)",2.6,564,"[15,20)",5
-"#Diseases of heart (I00-I09,I11,I13,I20-I51)",1.4,288,"[15,20)",6
-"#COVID-19 (U07.1) (annualized)",1.2,260,"[15,20)",7
+"Covid-19 (cumulative)",3.2,701,"[15,20)",4
+"#Malignant neoplasms (C00-C97)",2.8,589,"[15,20)",5
+"Covid-19 (annualized)",1.5,324,"[15,20)",6
+"#Diseases of heart (I00-I09,I11,I13,I20-I51)",1.4,288,"[15,20)",7
 "#Congenital malformations, deformations and chromosomal abnormalities (Q00-Q99)",0.9,188,"[15,20)",8
 "#Influenza and pneumonia (J09-J18)",0.3,71,"[15,20)",9
 "#Chronic lower respiratory diseases (J40-J47)",0.3,60,"[15,20)",9

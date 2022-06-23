@@ -5,10 +5,10 @@
 "#Assault (homicide) (*U01-*U02,X85-Y09,Y87.1)",3.4,2770,"[0,20)",4
 "#Intentional self-harm (suicide) (*U03,X60-X84,Y87.0)",3.4,2756,"[0,20)",4
 "#Malignant neoplasms (C00-C97)",2.1,1704,"[0,20)",6
-"#COVID-19 (U07.1) (cumulative)",1.3,1088,"[0,20)",7
+"Covid-19 (cumulative)",1.7,1433,"[0,20)",7
 "#Diseases of heart (I00-I09,I11,I13,I20-I51)",1.1,867,"[0,20)",8
-"#COVID-19 (U07.1) (annualized)",0.6,502,"[0,20)",9
-"#Influenza and pneumonia (J09-J18)",0.6,472,"[0,20)",9
+"Covid-19 (annualized)",0.8,661,"[0,20)",9
+"#Influenza and pneumonia (J09-J18)",0.6,472,"[0,20)",10
 "#Cerebrovascular diseases (I60-I69)",0.4,297,"[0,20)",11
 "#Septicemia (A40-A41)",0.3,287,"[0,20)",12
 "#Chronic lower respiratory diseases (J40-J47)",0.3,259,"[0,20)",12

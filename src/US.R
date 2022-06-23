@@ -53,6 +53,12 @@ d_us_grouped_annualized_0to19 = d_us_grouped_0to19 %>%
   mutate(per100K = covid/pop_age * 12 / STUDY_PERIOD  * 100000,covid = covid * 12 / STUDY_PERIOD,
          cause = "Covid-19 (annualized)")
 
+## Age groups for vaccination: .5-4, 5-11, 12-15, 16-17
+
+d_us_grouped_vax = d_us %>% group_by(agegroup=cut(Age,c(0,5,12,16,18,120),right=F,labels=c("0-4 year olds","5-11 year olds","12-15 year olds","16-17 year olds","18+"))) %>%   
+  summarise(covid = sum(covid), pop_age = sum(pop_age)) %>%
+  mutate(per100K = covid/pop_age * 100000, cause="Covid-19 (cumulative)")
+
 ## Make plots
 
 g = ggplot(filter(d_us, Age <= 18)) + 
@@ -60,7 +66,8 @@ g = ggplot(filter(d_us, Age <= 18)) +
            position = position_dodge2(preserve='single'))  
 g = g + scale_x_continuous(breaks = seq(0,20,2),expand=c(0,0))
 g = g + scale_y_continuous(expand=c(0,0),limits=c(0,8))
-g = g + labs(y = "Deaths per 100,000\n", x="\nAge") 
+g = g + labs(y = "Covid-19 deaths per 100,000\n", x="\nAge") 
+g = g + ggtitle("Covid-19 death rate in the US: March 1st, 2020-April 30th, 2022")
 g = g + theme_bw()
 g
 
@@ -71,7 +78,7 @@ g
 d_us %>% filter(Age <= 18) %>% mutate(rate=round(covid/pop_age*100000,1)) %>% select(Age,rate)
 
 # Figure 1
-ggsave(g,filename = here("figures/US-death-rate.png"),width=7,height=4)
+ggsave(g,filename = here("figures/US-death-rate.png"),width=8,height=4)
 
 ## Compare to CDC Wonder
 
@@ -86,7 +93,8 @@ d = rbind(
 d$rate = as.numeric(d$rate)
 d = d[complete.cases(d),]
 
-## "Cumulative ranks are: #4 (<1 year old), #5 (1-4 year olds), #5 (5-9 year olds), #4 (10-14 year olds), and #4 (15-19 year olds). Annualized ranks are: #8 (<1 year old), #7 (1-4 year olds), #6 (5-9 year olds), #6 (10-14 year olds), and #5 (15-19 year olds)."
+## "Cumulative ranks are: #4 (<1 year old), #5 (1-4 year olds), #5 (5-9 year olds), #4 (10-14 year olds), and #4 (15-19 year olds). 
+## Annualized ranks are: #8 (<1 year old), #7 (1-4 year olds), #6 (5-9 year olds), #6 (10-14 year olds), and #5 (15-19 year olds)."
 d %>% group_by(agegroup) %>% mutate(rate=round(as.numeric(rate),1)) %>% drop_na() %>% mutate(rank =  rank(-rate,ties.method="min")) %>% filter(cause == "Covid-19 (cumulative)")
 d %>% filter(cause != "Covid-19 (cumulative)") %>% group_by(agegroup) %>% mutate(rate=round(as.numeric(rate),1)) %>% drop_na() %>% mutate(rank =  rank(-rate,ties.method="min")) %>% filter(cause == "Covid-19 (annualized)")
 
@@ -114,5 +122,6 @@ d = rbind(
 
 # Table S2
 write.csv(d %>% filter(agegroup == "[0,20)") %>% group_by(agegroup) %>% mutate(rate=round(as.numeric(rate),1)) %>% drop_na() %>%
-            mutate(rank =  rank(-rate,ties.method="min")) %>% arrange(agegroup,-rate)  %>% mutate(rate=round(rate,1),deaths=round(deaths)),file = here("results/WONDER-0-19-infectious.csv"),row.names=F)
+          mutate(rank =  rank(-rate,ties.method="min")) %>% arrange(agegroup,-deaths)  %>% mutate(rate=round(rate,1),deaths=round(deaths)),
+          file = here("results/WONDER-0-19-infectious.csv"),row.names=F)
 
