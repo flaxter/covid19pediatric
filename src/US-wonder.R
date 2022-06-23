@@ -6,7 +6,7 @@ library(readxl)
 # US population data comes from https://www.census.gov/data/tables/2020/demo/popest/2020-demographic-analysis-tables.html
 #         "xls Table 1. Total U.S. Resident Population by Age, Sex, and Series: April 1, 2020 (In thousands)"  
 
-pop_us <- read_excel("data/raw_data/US_pop.xlsx", range = "A4:E90") %>% 
+pop_us <- read_excel(here("data/raw_data/US_pop.xlsx"), range = "A4:E90") %>% 
   select(c(1,4)) %>%
   rename(Age = Total, pop_age ="332601") %>%
   mutate(Age = ifelse(Age == "85+", "85", Age),
@@ -49,21 +49,19 @@ covid0_19$rate = 100000 * covid0_19$deaths / as.numeric(pop_us %>% filter(Age <=
 covid0_19$deaths = round(covid0_19$deaths)
 covid0_19
 
-## compare to other leading causes of death
-## ages < 1, 1-4, 5-9, 10-14, 15-19
+### compare to other leading causes of death: ages < 1, 1-4, 5-9, 10-14, 15-19
 d = rbind(
-fread(here("data/raw_data/wonder0.txt"),nrows=15) %>% select(cause=`15 Leading Causes of Death`,rate=`Crude Rate`,deaths=Deaths) %>% mutate(agegroup="[0,1)"),
-fread(here("data/raw_data/wonder1-4.txt"),nrows=15) %>% select(cause=`15 Leading Causes of Death`,rate=`Crude Rate`,deaths=Deaths) %>% mutate(agegroup="[1,5)"),
-fread(here("data/raw_data/wonder5-9.txt"),nrows=15) %>% select(cause=`15 Leading Causes of Death`,rate=`Crude Rate`,deaths=Deaths) %>% mutate(agegroup="[5,10)"),
-fread(here("data/raw_data/wonder10-14.txt"),nrows=15) %>% select(cause=`15 Leading Causes of Death`,rate=`Crude Rate`,deaths=Deaths) %>% mutate(agegroup="[10,15)"),
-fread(here("data/raw_data/wonder15-19.txt"),nrows=15) %>% select(cause=`15 Leading Causes of Death`,rate=`Crude Rate`,deaths=Deaths) %>% mutate(agegroup="[15,20)"),
-covid_grouped %>% select(cause,rate,deaths,agegroup))
+  fread(here("data/raw_data/wonder0.txt"),nrows=15) %>% select(cause=`15 Leading Causes of Death`,rate=`Crude Rate`,deaths=Deaths) %>% mutate(agegroup="[0,1)"),
+  fread(here("data/raw_data/wonder1-4.txt"),nrows=15) %>% select(cause=`15 Leading Causes of Death`,rate=`Crude Rate`,deaths=Deaths) %>% mutate(agegroup="[1,5)"),
+  fread(here("data/raw_data/wonder5-9.txt"),nrows=15) %>% select(cause=`15 Leading Causes of Death`,rate=`Crude Rate`,deaths=Deaths) %>% mutate(agegroup="[5,10)"),
+  fread(here("data/raw_data/wonder10-14.txt"),nrows=15) %>% select(cause=`15 Leading Causes of Death`,rate=`Crude Rate`,deaths=Deaths) %>% mutate(agegroup="[10,15)"),
+  fread(here("data/raw_data/wonder15-19.txt"),nrows=15) %>% select(cause=`15 Leading Causes of Death`,rate=`Crude Rate`,deaths=Deaths) %>% mutate(agegroup="[15,20)"),
+  covid_grouped %>% select(cause,rate,deaths,agegroup))
 d$rate = as.numeric(d$rate)
 d = d[complete.cases(d),]
 
 for(ag in unique(d$agegroup)) {
   print(sprintf("Age group: %s",as.character(ag)))
-  # print(max(diff((d %>% filter(agegroup == ag)  %>% mutate(rate=round(as.numeric(rate),1)) %>% arrange(-rate) %>% select(cause,rate,deaths))$deaths)))
   print(d %>% filter(agegroup == ag)  %>% mutate(rate=round(as.numeric(rate),1)) %>% arrange(-rate) %>% select(cause,rate,deaths))
   print(d %>% filter(agegroup == ag)  %>% mutate(rate=round(as.numeric(rate),4)) %>% arrange(-deaths) %>% select(cause,rate,deaths))
   
@@ -73,8 +71,7 @@ for(ag in unique(d$agegroup)) {
 write.csv(d %>% group_by(agegroup) %>% mutate(rate=round(as.numeric(rate),1)) %>% drop_na() %>%
             mutate(rank =  rank(-rate,ties.method="min")) %>% arrange(agegroup,-deaths),file = here("results/WONDER-agegroups.csv"),row.names=F)
 
-## compare to other leading causes of death
-### ages 0-19 together
+### compare to other leading causes of death: ages 0-19 together
 d = rbind(
   fread(here("data/raw_data/wonder0-19.txt"),nrows=15) %>% select(cause=`15 Leading Causes of Death`,rate=`Crude Rate`,deaths=Deaths) %>% 
     mutate(agegroup="[0,20)"),covid0_19)
@@ -83,12 +80,10 @@ for(ag in unique(d$agegroup)[1]) {
   print(sprintf("Age group: %s",as.character(ag)))
   print(d %>% filter(agegroup == ag)  %>% mutate(rate=round(as.numeric(rate),2),
                                                  rank =  rank(-rate,ties.method="min")
-  ) %>% arrange(-rate)) # %>% select(cause,rate))
+  ) %>% arrange(-rate))
 }
 write.csv(d %>% filter(agegroup == "[0,20)") %>% group_by(agegroup) %>% mutate(rate=round(as.numeric(rate),1)) %>% drop_na() %>%
             mutate(rank =  rank(-rate,ties.method="min")) %>% arrange(agegroup,-deaths),file = here("results/WONDER-0-19.csv"),row.names=F)
-
-# d = rbind(d_us_grouped3,d_us_grouped3_annualized) %>% select(rate=per100K,cause,agegroup,deaths=covid) 
 
 d = rbind(
   fread(here("data/raw_data/wonder-infectious-0-19.txt"),nrows=27) %>% select(cause=`ICD-10 113 Cause List`,rate=`Crude Rate`,deaths=Deaths) %>% mutate(agegroup="[0,20)"),covid0_19)
@@ -96,10 +91,10 @@ write.csv(d %>% filter(agegroup == "[0,20)") %>% group_by(agegroup) %>% mutate(r
             mutate(rank =  rank(-rate,ties.method="min")) %>% arrange(agegroup,-deaths),file = here("results/WONDER-0-19-infectious.csv"),row.names=F)
 
 # 
-# d %>% filter(cause != "Covid-19 (cumulative)") %>% group_by(agegroup) %>% mutate(rate=round(as.numeric(rate),1)) %>% drop_na() %>%
-#   mutate(rank =  rank(-rate,ties.method="min")) %>% arrange(agegroup,-rate) %>% filter(cause == "Covid-19 (annualized)")
-# d %>% filter(cause != "Covid-19 (annualized)") %>% group_by(agegroup) %>% mutate(rate=round(as.numeric(rate),1)) %>% drop_na() %>%
-#   mutate(rank =  rank(-rate,ties.method="min")) %>% arrange(agegroup,-rate) %>% filter(cause == "Covid-19 (cumulative)")
+d %>% filter(cause != "Covid-19 (cumulative)") %>% group_by(agegroup) %>% mutate(rate=round(as.numeric(rate),1)) %>% drop_na() %>%
+  mutate(rank =  rank(-rate,ties.method="min")) %>% arrange(agegroup,-rate) %>% filter(cause == "Covid-19 (annualized)")
+d %>% filter(cause != "Covid-19 (annualized)") %>% group_by(agegroup) %>% mutate(rate=round(as.numeric(rate),1)) %>% drop_na() %>%
+  mutate(rank =  rank(-rate,ties.method="min")) %>% arrange(agegroup,-rate) %>% filter(cause == "Covid-19 (cumulative)")
 
 
 
