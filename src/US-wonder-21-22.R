@@ -46,6 +46,8 @@ all_deaths / sum(pop_us$pop_age) * 100000
 covid$rate = covid$deaths / covid$pop * 100000  
 
 
+agegroups = levels((pop_us %>% filter(Age < 20) %>% group_by(agegroup=cut(Age,c(0,1,5,10,15,20,100),right=F)))$agegroup)
+
 covid.plot = covid
 covid.plot$agegroup = factor(covid.plot$agegroup,levels=agegroups[1:5],
                         labels = c("< 1 year olds","1-4 year olds","5-9 year olds","10-14 year olds","15-19 year olds"))
@@ -63,7 +65,6 @@ covid
 
 d = rbind(covid,wonder)
 
-agegroups = levels((pop_us %>% filter(Age < 20) %>% group_by(agegroup=cut(Age,c(0,1,5,10,15,20,100),right=F)))$agegroup)
 pct = d %>%
   group_by(agegroup) %>% mutate(percent = deaths/sum(deaths)) %>% arrange(-percent) 
 pct %>% filter(cause ==  "COVID-19") %>% arrange(agegroup)
