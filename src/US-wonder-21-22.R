@@ -69,6 +69,7 @@ pct = d %>%
   group_by(agegroup) %>% mutate(percent = deaths/sum(deaths)) %>% arrange(-percent) 
 pct %>% filter(cause ==  "COVID-19") %>% arrange(agegroup)
 
+d = d %>% mutate()
 for(ag in unique(d$agegroup)) {
   print(sprintf("Age group: %s",as.character(ag)))
   print(d %>% filter(agegroup == ag)  %>% mutate(rate=round(as.numeric(rate),1)) %>% arrange(-rate) %>% select(cause,rate,deaths))
@@ -78,9 +79,11 @@ for(ag in unique(d$agegroup)) {
 }
 
 d$agegroup = factor(d$agegroup,levels=agegroups)
+
 write.csv(d %>% group_by(agegroup) %>% mutate(rate=round(as.numeric(rate),1)) %>% drop_na() %>%
-  mutate(rank =  rank(-rate,ties.method="min")) %>% arrange(agegroup,-deaths) %>% 
-   select(cause,rate,deaths,rank,agegroup),file=here("results/WONDER-agegroups-2021-22.csv"),row.names=F)
+  mutate(rank =  rank(-rate,ties.method="min"))  %>% filter(rank <= 10) %>% mutate(percent=round(deaths/sum(deaths) * 100,1)) %>% 
+  arrange(agegroup,-deaths) %>% select(cause,rate,deaths,rank,percent,agegroup),
+  file=here("results/WONDER-agegroups-2021-22.csv"),row.names=F)
 
 ## text in manuscript:
 ## ranks are: #7 (<1 year old), #7 (1-4 year olds), #5 (5-9 year olds), #6 (10-14 year olds), and #5 (15-19 year olds). 
