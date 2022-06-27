@@ -36,6 +36,12 @@ wonder = rbind(
 wonder$rate = as.numeric(wonder$rate)
 wonder = wonder[complete.cases(wonder),]
 
+## rounding issues
+rate2 = wonder$deaths / wonder$pop * 100000
+which(wonder$rate != round(rate2,2))
+wonder[which(round(wonder$rate,1) != round(rate2,1)),]
+wonder$rate = round(rate2,1)
+
 all_deaths = as.numeric(fread(here("data/raw_data/2021-22/all-ages.txt"),nrows=1) %>% select(Deaths))
 covid = left_join(covid, pop_us %>% filter(Age < 20) %>% group_by(agegroup=cut(Age,c(0,1,5,10,15,20,100),right=F)) %>%   
   summarise(pop = sum(pop_age)),by="agegroup")
