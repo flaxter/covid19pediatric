@@ -16,7 +16,7 @@ pop_us = read.csv(here("data/nc-est2021-agesex-res.csv")) %>% filter(SEX == 0) %
   mutate(Age=AGE,pop_age = POPESTIMATE2021) %>%
    select(Age,pop_age) %>% filter(Age <= 100)
 head(pop_us)
-
+sum(pop_us$pop_age)/1e6 # should be 331.893745
 
 ## For Tables: compare to other leading causes of death: ages < 1, 1-4, 5-9, 10-14, 15-19
 covid = rbind(
@@ -135,6 +135,7 @@ write.csv(d %>% filter(agegroup == "[0,20)") %>% mutate(rate=round(as.numeric(ra
             arrange(-deaths) %>% select(cause,rate,deaths,rank,percent), file = here("results/WONDER-0-19.csv"),row.names=F)
 
 d = rbind(
-  fread(here("data/raw_data/wonder-infectious-0-19.txt"),nrows=27) %>% select(cause=`ICD-10 113 Cause List`,rate=`Crude Rate`,deaths=Deaths) %>% mutate(agegroup="[0,20)"),covid0_19)
+  fread(here("data/raw_data/wonder-infectious-0-19.txt"),nrows=27) %>% 
+    select(cause=`ICD-10 113 Cause List`,rate=`Crude Rate`,deaths=Deaths) %>% mutate(agegroup="[0,20)"),covid0_19 %>% select(-pop))
 write.csv(d %>% filter(agegroup == "[0,20)") %>% group_by(agegroup) %>% mutate(rate=round(as.numeric(rate),1)) %>% drop_na() %>%
             mutate(rank =  rank(-rate,ties.method="min")) %>% arrange(agegroup,-deaths),file = here("results/WONDER-0-19-infectious.csv"),row.names=F)
