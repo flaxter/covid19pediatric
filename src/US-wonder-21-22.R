@@ -86,13 +86,15 @@ for(ag in unique(d$agegroup)) {
 
 d$agegroup = factor(d$agegroup,levels=agegroups)
 d$cause[d$cause == "COVID-19"] = "#COVID-19 (U07.1)"
+
+
 write.csv(d %>% group_by(agegroup) %>% mutate(rate=round(as.numeric(rate),1)) %>% drop_na() %>%
   mutate(rank =  rank(-rate,ties.method="min"))  %>% filter(rank <= 10) %>% mutate(percent=round(deaths/sum(deaths) * 100,1)) %>% 
   arrange(agegroup,-deaths) %>% select(cause,rate,deaths,rank,percent,agegroup),
   file=here("results/WONDER-agegroups-2021-22.csv"),row.names=F)
 
 ## text in manuscript:
-## ranks are: #7 (<1 year old), #7 (1-4 year olds), #5 (5-9 year olds), #6 (10-14 year olds), and #5 (15-19 year olds). 
+## ranks are: #7 (<1 year old), #7 (1-4 year olds), #6 (5-9 year olds), #6 (10-14 year olds), and #5 (15-19 year olds). 
 d %>% group_by(agegroup) %>% mutate(rate=round(as.numeric(rate),1)) %>% drop_na() %>%
   mutate(rank =  rank(-rate,ties.method="min")) %>% arrange(agegroup,-deaths) %>% filter(grepl("COVID",cause)) %>% arrange(cause)
 
@@ -100,14 +102,16 @@ d %>% group_by(agegroup) %>% mutate(rate=round(as.numeric(rate),1)) %>% drop_na(
 
 covid0_19 = fread(here("data/raw_data/2021-22/0to19.txt"),nrows=1) %>%
   select(cause=`Underlying Cause of death`,deaths=Deaths) %>% mutate(agegroup="[0,20)")
-pop0_19 = as.numeric(pop_us %>% filter(Age < 20) %>% summarise(pop = sum(pop_age)))
-covid0_19$rate = covid0_19$deaths / pop0_19 * 100000
 
+covid0_19$pop = as.numeric(pop_us %>% filter(Age < 20) %>% summarise(pop = sum(pop_age)))
+covid0_19$rate = covid0_19$deaths / covid0_19$pop * 100000
 
 d = rbind(
-  fread(here("data/raw_data/wonder0-19.txt"),nrows=15) %>% select(cause=`15 Leading Causes of Death`,rate=`Crude Rate`,deaths=Deaths) %>% 
+  fread(here("data/raw_data/wonder0-19.txt"),nrows=15) %>% select(cause=`15 Leading Causes of Death`,rate=`Crude Rate`,deaths=Deaths,pop=Population) %>% 
     mutate(agegroup="[0,20)"),covid0_19)
+which(round(d$rate,1) != round(d$deaths/d$pop*100000,1))
 d
+
 # 
 pct = d %>%
   group_by(agegroup) %>% mutate(percent = deaths/sum(deaths)) %>% arrange(-percent) 
