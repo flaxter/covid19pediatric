@@ -17,14 +17,15 @@ pop_us = read.csv(here("data/nc-est2021-agesex-res.csv")) %>% filter(SEX == 0) %
    select(Age,pop_age) %>% filter(Age <= 100)
 head(pop_us)
 sum(pop_us$pop_age)/1e6 # should be 331.893745
-
+pop_us[1]
 ## For Tables: compare to other leading causes of death: ages < 1, 1-4, 5-9, 10-14, 15-19
 covid = rbind(
-  fread(here("data/raw_data/2021-22/0.txt"),nrows=1) %>% select(cause=`Underlying Cause of death`,deaths=Deaths) %>% mutate(agegroup="[0,1)"),
-  fread(here("data/raw_data/2021-22/1to4.txt"),nrows=1) %>% select(cause=`Underlying Cause of death`,deaths=Deaths) %>% mutate(agegroup="[1,5)"),
-  fread(here("data/raw_data/2021-22/5to9.txt"),nrows=1) %>% select(cause=`Underlying Cause of death`,deaths=Deaths) %>% mutate(agegroup="[5,10)"),
-  fread(here("data/raw_data/2021-22/10to14.txt"),nrows=1) %>% select(cause=`Underlying Cause of death`,deaths=Deaths) %>% mutate(agegroup="[10,15)"),
-  fread(here("data/raw_data/2021-22/15to19.txt"),nrows=1) %>% select(cause=`Underlying Cause of death`,deaths=Deaths) %>% mutate(agegroup="[15,20)"))
+  fread(here("data/raw_data/2021-22/0-15September.txt"),nrows=1) %>% select(cause=`Underlying Cause of death`,deaths=Deaths) %>% mutate(agegroup="[0,1)"),
+  fread(here("data/raw_data/2021-22/1to4-15September.txt"),nrows=1) %>% select(cause=`Underlying Cause of death`,deaths=Deaths) %>% mutate(agegroup="[1,5)"),
+  fread(here("data/raw_data/2021-22/5to9-15September.txt"),nrows=1) %>% select(cause=`Underlying Cause of death`,deaths=Deaths) %>% mutate(agegroup="[5,10)"),
+  fread(here("data/raw_data/2021-22/10to14-15September.txt"),nrows=1) %>% select(cause=`Underlying Cause of death`,deaths=Deaths) %>% mutate(agegroup="[10,15)"),
+  fread(here("data/raw_data/2021-22/15to19-15September.txt"),nrows=1) %>% select(cause=`Underlying Cause of death`,deaths=Deaths) %>% mutate(agegroup="[15,20)"))
+sum(covid$deaths)
 
 wonder = rbind(
   fread(here("data/raw_data/wonder0.txt"),nrows=15) %>% select(cause=`15 Leading Causes of Death`,rate=`Crude Rate`,deaths=Deaths,pop=Population) %>% mutate(agegroup="[0,1)"),
@@ -100,7 +101,7 @@ d %>% group_by(agegroup) %>% mutate(rate=round(as.numeric(rate),1)) %>% drop_na(
 
 ### compare to other leading causes of death: ages 0-19 together
 
-covid0_19 = fread(here("data/raw_data/2021-22/0to19.txt"),nrows=1) %>%
+covid0_19 = fread(here("data/raw_data/2021-22/0to19-15September.txt"),nrows=1) %>%
   select(cause=`Underlying Cause of death`,deaths=Deaths) %>% mutate(agegroup="[0,20)")
 
 covid0_19$pop = as.numeric(pop_us %>% filter(Age < 20) %>% summarise(pop = sum(pop_age)))
